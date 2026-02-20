@@ -72,6 +72,7 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -171,6 +172,7 @@
       animation: fadeIn 1.2s 1s forwards;
     }
 
+    /* SECTIONS */
     section { padding: 6rem 4rem; }
     .section-label {
       font-family: var(--mono);
@@ -192,6 +194,7 @@
       background: var(--ink-faint);
     }
 
+    /* ABOUT */
     #about { border-top: 1px solid var(--border); }
     .about-grid {
       display: grid;
@@ -309,6 +312,19 @@
       position: relative;
     }
     .project-item:hover .project-arrow { color: var(--accent); transform: translate(3px, -3px); }
+    .project-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      display: block;
+      transition: transform 0.4s ease;
+      transform: scale(1.02)
+    }
+
     .project-links {
       display: flex;
       gap: 0.75rem;
@@ -327,7 +343,50 @@
     }
     .project-link:hover { border-bottom-color: var(--accent); }
     .project-link-sep { color: var(--ink-faint); font-size: 0.68rem; }
+    /* =====================================================
+   PROJECT SIDE LAYOUT UPGRADE
+===================================================== */
 
+.project-content {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.project-media {
+  display: flex;
+  justify-content: center;
+}
+
+.project-content .project-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-bottom: 0;
+  transform: none;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .project-content {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .project-media {
+    justify-content: flex-start;
+  }
+
+  .project-content .project-image {
+    max-width: 100%;
+  }
+}
     /* CONTACT */
     #contact { border-top: 1px solid var(--border); }
     .contact-inner {
@@ -377,6 +436,7 @@
     .contact-link-arrow { font-size: 0.9rem; color: var(--ink-faint); transition: transform 0.2s, color 0.2s; }
     .contact-link-row:hover .contact-link-arrow { transform: translate(3px, -3px); color: var(--accent); }
 
+    /* FOOTER */
     footer {
       padding: 2rem 4rem;
       border-top: 1px solid var(--border);
@@ -397,6 +457,7 @@
       letter-spacing: 0.06em;
     }
 
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
@@ -406,6 +467,7 @@
       to { opacity: 1; }
     }
 
+    /* Scroll reveal */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -416,6 +478,7 @@
       transform: none;
     }
 
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.25rem 2rem; }
       .hero { padding: 7rem 2rem 4rem; }
@@ -445,17 +508,35 @@
     </ul>
   </nav>
 
+  <!-- HERO -->
   <section class="hero" id="home">
-    <span class="hero-eyebrow">Frontend Developer · Málaga, Spain</span>
-    <h1>Building interfaces<br>that <em>solve</em><br>real problems.</h1>
-    <p class="hero-sub">React & TypeScript specialist focused on turning complex user needs into clean, high-performance web applications — with real-world deployment and testing included.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View my work ↓</a>
-      <a href="mailto:juanzamudiofdez@gmail.com" class="btn-ghost">Get in touch →</a>
-    </div>
-    <span class="hero-bg-number" aria-hidden="true">JZ</span>
-  </section>
+  <span class="hero-eyebrow">
+    Frontend Developer · React & TypeScript · Málaga, Spain
+  </span>
 
+  <h1>
+    Building <em>production-ready</em><br>
+    web applications<br>
+    used in the real world.
+  </h1>
+
+  <p class="hero-sub">
+    Frontend Developer with an engineering background focused on
+    transforming complex workflows into fast, intuitive React
+    applications — shipped, tested, and used daily by real users.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">View my work ↓</a>
+    <a href="mailto:juanzamudiofdez@gmail.com" class="btn-ghost">
+      Get in touch →
+    </a>
+  </div>
+
+  <span class="hero-bg-number" aria-hidden="true">JZ</span>
+</section>
+
+  <!-- ABOUT -->
   <section id="about">
     <div class="section-label">About</div>
     <div class="about-grid">
@@ -513,72 +594,152 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label">Selected Projects</div>
-    <div class="projects-list">
+  <div class="section-label">Selected Projects</div>
+  <div class="projects-list">
 
-      <div class="project-item reveal">
-        <span class="project-num">01</span>
-        <div class="project-body">
-          <h3 class="project-title">Driving School Scheduling App</h3>
-          <p class="project-desc">Identified a critical scheduling inefficiency at Autoescuela Torcal and independently built a custom PWA now used daily by 15 instructors. After Google Analytics revealed 90% mobile usage, led a full refactor to mobile-first architecture. Features real-time Firebase sync, monthly target tracking, and CI/CD deployment.</p>
-          <div class="project-techs">
-            <span class="project-tech">React</span>
-            <span class="project-tech">TypeScript</span>
-            <span class="project-tech">Firebase</span>
-            <span class="project-tech">PWA</span>
-            <span class="project-tech">Google Analytics</span>
-            <span class="project-tech">GitHub Actions</span>
+    <div class="project-item reveal">
+      <span class="project-num">01</span>
+      <div class="project-body">
+        <h3 class="project-title">Driving School Scheduling App</h3>
+        <div class="project-content">
+          <div class="project-media">
+            <img src="assets/Animationcalendar2.gif" alt="Driving School App preview" class="project-image" />
           </div>
-          <div class="project-links">
-            <a href="https://github.com/juanzafe" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+          <div>
+            <p class="project-desc">
+              Production scheduling platform used daily by 15 instructors,
+              reducing booking conflicts and saving administrative time through
+              real-time synchronization.
+              <br><br>
+              Built with a mobile-first architecture after analytics revealed
+              90% of usage occurred between lessons inside vehicles. Includes
+              offline Firestore persistence, predictive income forecasting,
+              and automated CI/CD deployment.
+            </p>
+            <div class="project-techs">
+              <span class="project-tech">React</span>
+              <span class="project-tech">TypeScript</span>
+              <span class="project-tech">Firebase</span>
+              <span class="project-tech">PWA</span>
+              <span class="project-tech">Google Analytics</span>
+              <span class="project-tech">Installable App</span>
+              <span class="project-tech">GitHub Actions</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.calendarioautoescuela.es/" target="_blank" rel="noopener" class="project-link">Live Demo →</a>
+              <span class="project-link-sep">·</span>
+              <a href="https://github.com/juanzafe/Driving-School-Calendar" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+            </div>
           </div>
         </div>
-        <span class="project-arrow">↗</span>
       </div>
-
-      <div class="project-item reveal">
-        <span class="project-num">02</span>
-        <div class="project-body">
-          <h3 class="project-title">ZBE Checker — Spain</h3>
-          <p class="project-desc">Interactive multi-city tool for checking vehicle access to Low Emission Zones across Málaga, Madrid, and Barcelona. Real-time map visualization with Leaflet, custom polygon detection, emission badge calculator, nearby parking via OpenStreetMap API, and full i18next bilingual support.</p>
-          <div class="project-techs">
-            <span class="project-tech">React</span>
-            <span class="project-tech">TypeScript</span>
-            <span class="project-tech">Leaflet</span>
-            <span class="project-tech">OpenStreetMap API</span>
-            <span class="project-tech">i18next</span>
-            <span class="project-tech">Vitest</span>
-            <span class="project-tech">Playwright</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/juanzafe" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </div>
-        </div>
-        <span class="project-arrow">↗</span>
-      </div>
-
-      <div class="project-item reveal">
-        <span class="project-num">03</span>
-        <div class="project-body">
-          <h3 class="project-title">Car Advisor Pro</h3>
-          <p class="project-desc">Advanced vehicle comparison platform built on top of technical APIs (NHTSA, API Ninjas). Complex data normalization, scalable React architecture with strong TypeScript typing, focused on performance and data consistency across large datasets.</p>
-          <div class="project-techs">
-            <span class="project-tech">React</span>
-            <span class="project-tech">TypeScript</span>
-            <span class="project-tech">NHTSA API</span>
-            <span class="project-tech">REST APIs</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/juanzafe" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </div>
-        </div>
-        <span class="project-arrow">↗</span>
-      </div>
-
+      <span class="project-arrow">↗</span>
     </div>
-  </section>
 
+    <div class="project-item reveal">
+      <span class="project-num">02</span>
+      <div class="project-body">
+        <h3 class="project-title">ZBE Checker — Spain</h3>
+        <div class="project-content">
+          <div class="project-media">
+            <img src="assets/Animationzbe3.gif" alt="ZBE Checker preview" class="project-image" />
+          </div>
+          <div>
+            <p class="project-desc">
+              Interactive tool covering Málaga, Madrid, and Barcelona — built with a scalable architecture to add new cities easily. 
+              Includes a smart label calculator, real-time GPS zone detection, and a "Future Mode" showing 2026/2027 restrictions. 
+              <br><br>
+              Accuracy matters here (fines are at stake), so the restriction logic is covered by Vitest unit tests and Playwright E2E tests across Chrome, Firefox, and WebKit.
+            </p>
+            <div class="project-techs">
+              <span class="project-tech">React</span>
+              <span class="project-tech">TypeScript</span>
+              <span class="project-tech">Leaflet</span>
+              <span class="project-tech">OpenStreetMap API</span>
+              <span class="project-tech">i18next</span>
+              <span class="project-tech">PWA</span>
+              <span class="project-tech">Vitest</span>
+              <span class="project-tech">Playwright</span>
+            </div>
+            <div class="project-links">
+              <a href="https://zbemalaga-6e82d.web.app/" target="_blank" rel="noopener" class="project-link">Live Demo →</a>
+              <span class="project-link-sep">·</span>
+              <a href="https://github.com/juanzafe/malaga-ECO-driving" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </div>
+
+    <div class="project-item reveal">
+      <span class="project-num">03</span>
+      <div class="project-body">
+        <h3 class="project-title">Car Advisor Pro</h3>
+        <div class="project-content">
+          <div class="project-media">
+            <img src="assets/Animationcaradv2.gif" alt="Car Advisor Pro preview" class="project-image" />
+          </div>
+          <div>
+            <p class="project-desc">
+              Vehicle comparison platform that solves a real problem: comparing cars usually means dozens of open tabs with inconsistent data. 
+              <br><br>
+              Built a custom data normalization engine to sanitize and unify specs from two different APIs (NHTSA and API Ninjas). 
+              Fully bilingual (EN/ES), with automated CI/CD via GitHub Actions and Firebase.
+            </p>
+            <div class="project-techs">
+              <span class="project-tech">React</span>
+              <span class="project-tech">TypeScript</span>
+              <span class="project-tech">NHTSA API</span>
+              <span class="project-tech">REST APIs</span>
+              <span class="project-tech">Data Normalization</span>
+            </div>
+            <div class="project-links">
+              <a href="https://caradvisorpro.es/" target="_blank" rel="noopener" class="project-link">Live Demo →</a>
+              <span class="project-link-sep">·</span>
+              <a href="https://github.com/juanzafe/car-advisor" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </div>
+
+    <div class="project-item reveal">
+      <span class="project-num">04</span>
+      <div class="project-body">
+        <h3 class="project-title">Padel Pull</h3>
+        <div class="project-content">
+          <div>
+            <p class="project-desc">
+              Web app to generate random padel matches quickly and easily. 
+              Focuses on extreme simplicity for on-court use where speed is key.
+              <br><br>
+              Clean, fun interface focused on a great mobile experience and instant utility without friction.
+            </p>
+            <div class="project-techs">
+              <span class="project-tech">React</span>
+              <span class="project-tech">TypeScript</span>
+              <span class="project-tech">CSS</span>
+              <span class="project-tech">Mobile First</span>
+            </div>
+            <div class="project-links">
+              <a href="https://padelpull.github.io" target="_blank" rel="noopener" class="project-link">Live Demo →</a>
+              <span class="project-link-sep">·</span>
+              <a href="https://github.com/juanzafe/padelpull.github.io" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </div>
+
+  </div>
+</section>
+
+  <!-- CONTACT -->
   <section id="contact">
     <div class="section-label">Contact</div>
     <div class="contact-inner">
@@ -589,7 +750,9 @@
       <div class="contact-links reveal">
         <a href="mailto:juanzamudiofdez@gmail.com" class="contact-link-row">
           <span class="contact-link-label">Email</span>
-          <span class="contact-link-value">juanzamudiofdez@gmail.com</span>
+            <span class="contact-link-value">
+              juanzamudiofdez@gmail.com
+            </span>
           <span class="contact-link-arrow">↗</span>
         </a>
         <a href="https://www.linkedin.com/in/juan-zamudio-ba3a20375/" target="_blank" rel="noopener" class="contact-link-row">
@@ -612,11 +775,13 @@
   </footer>
 
   <script>
+    // Nav scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
     });
 
+    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
